@@ -3,17 +3,19 @@ package com.corp.esaa.transactions.logConsumer.models.database;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.Instant;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Document
-public class MessageEvent {
+public class MessageEvent implements Serializable {
 
     @Id
     private String id;
+    private String type;
     private String message;
-    private Instant publishAt;
-    private Instant createdAt;
+    private LocalDateTime publishAt;
+    private LocalDateTime createdAt;
 
     public String getId() {
         return id;
@@ -31,19 +33,27 @@ public class MessageEvent {
         this.message = message;
     }
 
-    public Instant getPublishAt() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalDateTime getPublishAt() {
         return publishAt;
     }
 
-    public void setPublishAt(Instant publishAt) {
+    public void setPublishAt(LocalDateTime publishAt) {
         this.publishAt = publishAt;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

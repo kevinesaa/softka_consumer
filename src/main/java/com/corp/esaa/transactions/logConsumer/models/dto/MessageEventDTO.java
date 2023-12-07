@@ -1,13 +1,13 @@
 package com.corp.esaa.transactions.logConsumer.models.dto;
 
-import java.time.Instant;
-import java.util.Objects;
+import java.time.LocalDateTime;
 
 
 public class MessageEventDTO {
 
     private String message;
-    private Instant publishAt;
+    private String type;
+    private LocalDateTime publishAt;
 
     public String getMessage() {
         return message;
@@ -17,12 +17,19 @@ public class MessageEventDTO {
         this.message = message;
     }
 
-    public Instant getPublishAt() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalDateTime getPublishAt() {
         return publishAt;
     }
 
-    public void setPublishAt(Instant publishAt) {
+    public void setPublishAt(LocalDateTime publishAt) {
         this.publishAt = publishAt;
     }
-
 }
