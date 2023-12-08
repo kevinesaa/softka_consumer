@@ -1,6 +1,20 @@
 version: "3.8"
+volumes:
+  mongo_data:
 
 services:
+  app:
+    container_name: "consumer-img"
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
@@ -10,3 +24,15 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
+
+  mongodb:
+    container_name: mongodb
+    image: rabbitmq:3-management
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
+
+    volumes:
+      - ~/mongo_data:/data/db
