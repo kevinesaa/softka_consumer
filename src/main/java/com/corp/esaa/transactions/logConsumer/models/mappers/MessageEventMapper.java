@@ -3,7 +3,6 @@ package com.corp.esaa.transactions.logConsumer.models.mappers;
 import com.corp.esaa.transactions.logConsumer.models.database.MessageEvent;
 import com.corp.esaa.transactions.logConsumer.models.dto.MessageEventDTO;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 public class MessageEventMapper {
